@@ -9,9 +9,10 @@ classroom notebook, run end to end on a Google Colab T4 GPU.
 754.0 (after 150 episodes), a change of +262.0.** That is about 1.4 standard errors on
 a five-game test — suggestive, not conclusive. And the honest complication, reported in
 full in §6: I ran the *identical* configuration a second time and it scored **500.0**.
-Two runs with the same three hyperparameters and the same seed differ by 254 points,
-which is larger than any gap I measured *between* hyperparameter settings. At this
-training scale, run-to-run variance dominates.
+Two runs with the same three hyperparameters and the same seed differ by 254 points —
+the same order of magnitude as every difference I measured *between* hyperparameter
+settings. At this training scale, run-to-run variance is not a small correction on top
+of the hyperparameter effect; it is the same size as the effect.
 
 ### Evidence for the submitted run — [`results/main_run_exp0.20_ep150_lr0.0001/`](results/main_run_exp0.20_ep150_lr0.0001/)
 
@@ -233,11 +234,19 @@ non-zero `learning_updates` count.
 same three hyperparameters, the same seed 42, the same evaluation seeds, and the same
 hardware. They differ only through non-determinism in GPU floating-point kernels, which
 is enough to send the two runs down different trajectories. They ended **254 points
-apart** — a gap bigger than any difference I measured between *different* hyperparameter
-settings (the widest of those is 348 points, and every one of them is confounded by this
-same variance). So the +262 in §5 cannot be attributed to the choice of 150 episodes. It
-is one draw from a distribution I have sampled twice, with a spread wide enough to
-contain both outcomes comfortably.
+apart**.
+
+That number is the problem, because the differences I am trying to measure are the same
+size. The gaps between *different* settings in the table above range from 22 to 348
+points, so a 254-point spread *within* one setting swallows most of them. The sharpest
+way to see it: the apparent effect of "150 episodes instead of 100" depends entirely on
+which of my two 150-episode runs I quote. Against the 100-episode pair it is either
+**+86 to +94** (if I quote the 500.0 run) or **+340 to +348** (if I quote the 754.0 run) —
+a fourfold difference produced by nothing but GPU floating-point non-determinism.
+
+So the +262 in §5 cannot be attributed to the choice of 150 episodes. It is one draw from
+a distribution I have sampled exactly twice, and the two draws are far enough apart that
+I cannot say where its centre is.
 
 The 100-episode pair replicated much more tightly (414 and 406, both ~80 points **below**
 baseline), which suggests that at 100 episodes the agent reliably has not learned
@@ -297,9 +306,9 @@ moves and any change is attributable to it.
 
 Why that one, and not ε or the learning rate: this run used 86,478 decisions, roughly
 346,000 emulator frames — about **0.7%** of a standard 50M-frame Atari DQN run. §6 shows
-that at this budget the run-to-run spread (254 points) is larger than the gaps between
-hyperparameter settings, so comparing ε or learning-rate values now would just be
-comparing noise. The only way to make any comparison meaningful is to train long enough
+that at this budget the run-to-run spread (254 points) is as large as the gaps between
+hyperparameter settings (22–348 points), so comparing ε or learning-rate values now would
+mostly be comparing noise. The only way to make any comparison meaningful is to train long enough
 for a real effect to exceed that variance. The cost is manageable: 150 episodes took 329
 seconds on a T4, so 1,500 episodes is roughly 55 minutes, comfortably inside one Colab
 session. I would also run it **three times** and report the spread, not a single number —
