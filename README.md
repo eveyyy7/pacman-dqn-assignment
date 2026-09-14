@@ -7,7 +7,7 @@ classroom notebook, run end to end on a Google Colab T4 GPU.
 
 **Result: mean score over the five evaluation games rose from 492.0 (untrained) to 754.0
 (after 150 episodes), a change of +262.0.** The trained agent beat the untrained network
-on three of the five matched games. On a five-game test that difference is about 1.4
+on three of the five matched games. On a five-game test that difference is about 1.3
 standard errors, so it is suggestive rather than conclusive — §5 gives all five scores so
 the comparison can be judged directly.
 
@@ -137,13 +137,13 @@ Raw data: [`comparison.json`](results/main_run_exp0.20_ep150_lr0.0001/comparison
 | 4 (404) | 800 | 360 | **−440** |
 | 5 (505) | 490 | 1310 | +820 |
 | **Mean** | **492.0** | **754.0** | **+262.0** |
-| Standard deviation | 170.1 | 375.5 | |
+| Standard deviation (n = 5) | 190.2 | 419.8 | |
 | Mean decisions survived | 589.0 | 617.0 | +28 |
 | Games stopped by the time limit | 0 / 5 | 0 / 5 | |
 
 The mean rose 53% and the trained agent won three of the five matched games. With five
-games per condition the standard error of that difference is about ±184 points, so +262
-is roughly **1.4 standard errors** — enough to be interesting, not enough to call the
+games per condition the standard error of that difference is about ±206 points, so +262
+is roughly **1.3 standard errors** — enough to be interesting, not enough to call the
 effect established. Five games is a small comparison, not a reliable estimate.
 
 ### Gameplay
@@ -246,7 +246,7 @@ moves and any change is attributable to it.
 
 Why that one, and not ε or the learning rate: this run used 86,478 decisions, roughly
 346,000 emulator frames — about **0.7%** of a standard 50M-frame Atari DQN run. At that
-budget the +262 measured here is only 1.4 standard errors, so before comparing ε or
+budget the +262 measured here is only 1.3 standard errors, so before comparing ε or
 learning-rate values it is worth training long enough for a real effect to clear the
 noise. The cost is manageable: 150 episodes took 329 seconds on a T4, so 1,500 episodes
 is roughly 55 minutes, comfortably inside one Colab session.
