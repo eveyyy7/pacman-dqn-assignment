@@ -160,8 +160,12 @@ above cover each full game.
 
 ![Best trained gameplay](results/main_run_exp0.20_ep150_lr0.0001/gifs/final_best.gif)
 
-This is the best of five, not the typical one. The five-score table above is the evidence;
-the GIF is the illustration.
+Watched side by side, the two excerpts look much alike: at the end of the recorded 20
+seconds the untrained network is on 350 and the trained agent on 360, and both have lost
+one life. The trained agent's 1310 was earned later in that same game, which the excerpt
+does not reach. So this is the best of five games, not the typical one, and even for that
+game the GIF shows only the opening — the five-score table above is the evidence, the GIF
+is the illustration.
 
 **Intermediate checkpoints** — one evaluation game on seed 101 every 25 episodes
 ([`demo_scores.json`](results/main_run_exp0.20_ep150_lr0.0001/demo_scores.json)):
