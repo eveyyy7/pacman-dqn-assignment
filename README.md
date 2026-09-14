@@ -7,9 +7,9 @@ classroom notebook, run end to end on a Google Colab T4 GPU.
 
 **Result: mean score over the five evaluation games rose from 492.0 (untrained) to 754.0
 (after 150 episodes), a change of +262.0.** The trained agent beat the untrained network
-on three of the five matched games. On a five-game test that difference is about 1.3
-standard errors, so it is suggestive rather than conclusive — §5 gives all five scores so
-the comparison can be judged directly.
+on three of the five matched games. The evaluation contains only five games, so this is a
+small sample and should not be treated as strong evidence of a robust improvement — §5
+gives all five scores so the comparison can be judged directly.
 
 ### Evidence — [`results/main_run_exp0.20_ep150_lr0.0001/`](results/main_run_exp0.20_ep150_lr0.0001/)
 
@@ -137,14 +137,14 @@ Raw data: [`comparison.json`](results/main_run_exp0.20_ep150_lr0.0001/comparison
 | 4 (404) | 800 | 360 | **−440** |
 | 5 (505) | 490 | 1310 | +820 |
 | **Mean** | **492.0** | **754.0** | **+262.0** |
-| Standard deviation (n = 5) | 190.2 | 419.8 | |
+| Standard deviation (5 games) | 190.2 | 419.8 | |
 | Mean decisions survived | 589.0 | 617.0 | +28 |
 | Games stopped by the time limit | 0 / 5 | 0 / 5 | |
 
-The mean rose 53% and the trained agent won three of the five matched games. With five
-games per condition the standard error of that difference is about ±206 points, so +262
-is roughly **1.3 standard errors** — enough to be interesting, not enough to call the
-effect established. Five games is a small comparison, not a reliable estimate.
+The mean rose 53% and the trained agent won three of the five matched games. The
+evaluation contains only five games, so this is a small sample and should not be treated
+as strong evidence of a robust improvement. Two of the five games moved the other way,
+one of them by 440 points.
 
 ### Gameplay
 
@@ -160,12 +160,11 @@ above cover each full game.
 
 ![Best trained gameplay](results/main_run_exp0.20_ep150_lr0.0001/gifs/final_best.gif)
 
-Watched side by side, the two excerpts look much alike: at the end of the recorded 20
-seconds the untrained network is on 350 and the trained agent on 360, and both have lost
-one life. The trained agent's 1310 was earned later in that same game, which the excerpt
-does not reach. So this is the best of five games, not the typical one, and even for that
-game the GIF shows only the opening — the five-score table above is the evidence, the GIF
-is the illustration.
+In the recorded 20-second excerpts the trained and untrained agents look fairly similar:
+at the end of the 20 seconds the untrained network is on 350 and the trained agent on 360,
+and both have lost one life. The trained agent's advantage appears later in some full
+evaluation games — its 1310 here was earned after the excerpt ends — which is why I rely
+on the five full-game scores as well as the GIFs when assessing learning.
 
 **Intermediate checkpoints** — one evaluation game on seed 101 every 25 episodes
 ([`demo_scores.json`](results/main_run_exp0.20_ep150_lr0.0001/demo_scores.json)):
@@ -246,10 +245,10 @@ moves and any change is attributable to it.
 
 Why that one, and not ε or the learning rate: this run used 86,478 decisions, roughly
 346,000 emulator frames — about **0.7%** of a standard 50M-frame Atari DQN run. At that
-budget the +262 measured here is only 1.3 standard errors, so before comparing ε or
-learning-rate values it is worth training long enough for a real effect to clear the
-noise. The cost is manageable: 150 episodes took 329 seconds on a T4, so 1,500 episodes
-is roughly 55 minutes, comfortably inside one Colab session.
+budget the result rests on five games, so before comparing ε or learning-rate values it is
+worth training long enough for a difference to show up clearly. The cost is manageable:
+150 episodes took 329 seconds on a T4, so 1,500 episodes is roughly 55 minutes,
+comfortably inside one Colab session.
 
 ---
 
