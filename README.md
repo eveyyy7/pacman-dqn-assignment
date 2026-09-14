@@ -200,8 +200,7 @@ The training score drifted up only about 13%, against a per-episode standard dev
 348 — essentially flat. Yet the five-seed evaluation went up 53%. The two numbers are not
 measuring the same thing: training games are played at ε = 0.20 with a fresh seed each
 episode, while evaluation plays five fixed seeds at ε = 0.05, so a policy can look
-mediocre in training and better under evaluation. It is a good reminder not to read the
-training curve as the result.
+mediocre in training and better under evaluation.
 
 **Loss went up, not down.** Mean Huber loss per episode climbed steadily from **0.026** to
 **0.093**. This is normal in early DQN training — as the target network propagates reward
@@ -248,16 +247,13 @@ So the +262 in §5 cannot be attributed to the choice of 150 episodes. It is one
 a distribution I have sampled exactly twice, and the two draws are far enough apart that
 I cannot say where its centre is.
 
-The 100-episode pair replicated much more tightly (414 and 406, both ~80 points **below**
-baseline), which suggests that at 100 episodes the agent reliably has not learned
-anything useful, while at 150 it is on the edge — sometimes finding something, sometimes
-not.
+The 100-episode pair landed close together (414.0 and 406.0), both about 80 points
+**below** baseline.
 
-The 300-episode run is the strongest counter-evidence to a simple "more training is
-better" story. It had **more than twice** the updates of the submitted run, plus lower
-exploration and a lower learning rate, and finished 14 points below baseline. Its loss
-also climbed the highest of the five (0.025 → 0.109, peaking at 0.162). More training,
-more loss growth, no score gain.
+The 300-episode run had **more than twice** the learning updates of the submitted run,
+plus lower exploration and a lower learning rate, and finished 14 points below baseline.
+Its loss climbed the highest of the five (0.025 → 0.109, peaking at 0.162). More
+training and more loss growth did not produce a higher score.
 
 ---
 
@@ -283,14 +279,12 @@ points faster overall (83.5 → 122.2 points per 100 decisions) while surviving 
 long (589 → 617 decisions), so the behaviour it found is not simply reckless — but it is
 not robust either.
 
-There are clean mechanical reasons to expect exactly this at this scale. The
-**5,000-transition replay buffer** holds only about eight games of experience, so the
-network is trained almost entirely on a sliding window of recent, highly correlated
-frames, and it forgets rare, expensive situations long before it can generalise from
-them. **Reward clipping** (§3) tells it a pellet and a ghost-eat are worth the same, and
-with γ = 0.99 and no termination on life loss, the cost of dying is diffuse and delayed
-while the next pellet is immediate and certain. The agent optimises the part of the
-problem it can actually see, which varies with where it happens to start.
+Two features of the setup plausibly contribute. The **5,000-transition replay buffer**
+holds only about eight games of experience, so the network trains on a narrow sliding
+window of recent, highly correlated frames. And **reward clipping** (§3) makes a pellet
+and a ghost-eat worth the same, so with γ = 0.99 and no termination on life loss, the
+cost of dying is diffuse and delayed while the next pellet is immediate and certain.
+I did not test either of these, so they are possible explanations, not findings.
 
 **Stated plainly:** this is five evaluation games from one run, cross-checked against a
 second run of the same configuration that did not reproduce it. It is an observation that
@@ -314,15 +308,6 @@ seconds on a T4, so 1,500 episodes is roughly 55 minutes, comfortably inside one
 session. I would also run it **three times** and report the spread, not a single number —
 this experiment's clearest lesson is that one run is not a measurement.
 
-Two further changes I would make after that. Both sit outside the three student-facing
-settings, and both are, I think, the real ceiling on this setup:
-
-* **Replay capacity 5,000 → 100,000.** At 5,000 the buffer is overwritten about every
-  eight games. The original DQN paper uses 1,000,000. No setting of ε, episode count, or
-  learning rate can compensate for training on that narrow a window.
-* **Decaying ε (1.0 → 0.05) instead of a constant 0.20.** A permanent 20% random-action
-  rate caps performance even after the policy becomes good, because one move in five is
-  thrown away.
 
 ---
 
