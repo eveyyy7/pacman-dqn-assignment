@@ -1,0 +1,12 @@
+# Model checkpoints are large; keep them locally or attach to a release.
+*.pt
+# Raw experiment folders and download archives produced by the notebook.
+pacman_runs/
+*.zip
+_runs/
+# Python / Jupyter noise
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+*.player.log
+.DS_Store
