@@ -204,6 +204,14 @@ error grows with them. It is a clean illustration of the point the assignment ma
 *lower training loss does not guarantee better play.* Here loss rose by a factor of 3.6
 while play, by the evaluation measure, improved.
 
+### Note on earlier attempts
+
+Before this run, I made several exploratory attempts while getting the setup working,
+including one that used the same three hyperparameters but whose notebook was not
+successfully saved with all outputs intact. Those earlier runs are retained locally and
+are not part of this submission. The 150-episode experiment documented here is my final
+documented run, and all results reported in this README come from that run.
+
 ---
 
 ## 6. One observed limitation
