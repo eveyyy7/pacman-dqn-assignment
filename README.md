@@ -216,8 +216,8 @@ enormously on some evaluation seeds and got sharply worse on another.**
 
 On seed 404 the trained agent scored less than half the untrained network's 800 and died
 after 360 decisions instead of 640. It is not that the agent became uniformly better and
-one game was unlucky — it acquired behaviour that pays off in some maze and ghost
-configurations and costs it in others. Across the five games it does collect points
+one game was unlucky — it acquired behaviour that pays off in some starting
+positions and ghost configurations and costs it in others. Across the five games it does collect points
 faster overall (83.5 → 122.2 points per 100 decisions) while surviving about as long
 (589 → 617 decisions), so the behaviour is not simply reckless — but it is not robust
 either.
