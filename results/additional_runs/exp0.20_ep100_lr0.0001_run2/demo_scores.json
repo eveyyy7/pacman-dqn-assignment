@@ -5,11 +5,11 @@
       101
     ],
     "scores": [
-      490.0
+      640.0
     ],
-    "mean": 490.0,
+    "mean": 640.0,
     "steps": [
-      524
+      684
     ],
     "time_limited": [
       false
@@ -21,11 +21,11 @@
       101
     ],
     "scores": [
-      350.0
+      640.0
     ],
-    "mean": 350.0,
+    "mean": 640.0,
     "steps": [
-      560
+      686
     ],
     "time_limited": [
       false
@@ -37,11 +37,11 @@
       101
     ],
     "scores": [
-      540.0
+      680.0
     ],
-    "mean": 540.0,
+    "mean": 680.0,
     "steps": [
-      486
+      570
     ],
     "time_limited": [
       false
@@ -53,43 +53,11 @@
       101
     ],
     "scores": [
-      1260.0
+      320.0
     ],
-    "mean": 1260.0,
+    "mean": 320.0,
     "steps": [
-      730
-    ],
-    "time_limited": [
-      false
-    ]
-  },
-  {
-    "episode": 125,
-    "seeds": [
-      101
-    ],
-    "scores": [
-      460.0
-    ],
-    "mean": 460.0,
-    "steps": [
-      476
-    ],
-    "time_limited": [
-      false
-    ]
-  },
-  {
-    "episode": 150,
-    "seeds": [
-      101
-    ],
-    "scores": [
-      330.0
-    ],
-    "mean": 330.0,
-    "steps": [
-      512
+      492
     ],
     "time_limited": [
       false

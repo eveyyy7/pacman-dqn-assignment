@@ -1,0 +1,194 @@
+[
+  {
+    "episode": 25,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      80.0
+    ],
+    "mean": 80.0,
+    "steps": [
+      524
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 50,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      1010.0
+    ],
+    "mean": 1010.0,
+    "steps": [
+      992
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 75,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      240.0
+    ],
+    "mean": 240.0,
+    "steps": [
+      476
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 100,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      420.0
+    ],
+    "mean": 420.0,
+    "steps": [
+      456
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 125,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      410.0
+    ],
+    "mean": 410.0,
+    "steps": [
+      554
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 150,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      2750.0
+    ],
+    "mean": 2750.0,
+    "steps": [
+      820
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 175,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      430.0
+    ],
+    "mean": 430.0,
+    "steps": [
+      532
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 200,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      380.0
+    ],
+    "mean": 380.0,
+    "steps": [
+      630
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 225,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      380.0
+    ],
+    "mean": 380.0,
+    "steps": [
+      486
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 250,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      370.0
+    ],
+    "mean": 370.0,
+    "steps": [
+      494
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 275,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      410.0
+    ],
+    "mean": 410.0,
+    "steps": [
+      452
+    ],
+    "time_limited": [
+      false
+    ]
+  },
+  {
+    "episode": 300,
+    "seeds": [
+      101
+    ],
+    "scores": [
+      440.0
+    ],
+    "mean": 440.0,
+    "steps": [
+      602
+    ],
+    "time_limited": [
+      false
+    ]
+  }
+]
